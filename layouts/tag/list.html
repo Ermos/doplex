@@ -1,0 +1,7 @@
+{{ partial "index_top.html" . }}
+{{ $pag := .Paginate .Pages }}
+{{ range $pag.Pages }}
+{{ partial "article-block.html" . }}
+{{ end }}
+{{ partial "pagination.html" . }}
+{{ partial "index_bottom.html" . }}

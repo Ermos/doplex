@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+<body>
+<header class="header">
+    <div class="header__content">
+        <a href="{{ .Site.BaseURL }}" title="Home" class="header__title">
+            <img alt="Kilian SMITI" class="header__avatar" src="{{ .Site.BaseURL }}/images/avatar.jpeg"/>
+            <div class="header__chevron">›</div>
+            <div class="header__logo">
+                <div class="logo">
+                    KILIAN SMITI<span>.</span>
+                </div>
+                <div class="logo-desc">
+                    <p class="logo-desc__text">I'm a <i id="logo-desc"></i></p>
+                    <span></span>
+                </div>
+            </div>
+        </a>
+        <nav class="header__navigation">
+            <a title="Blog"
+               href="{{ .Site.BaseURL }}"
+               class="navigation__item {% if page.url == '/blog/'  %}active{% endif %}"
+            >Blog</a>
+
+            <a title="Projects"
+               href="{{ .Site.BaseURL }}projects"
+               class="navigation__item {% if page.url == '/projects/'  %}active{% endif %}"
+            >Projects</a>
+
+            <a title="About Me"
+               href="{{ .Site.BaseURL }}about-me"
+               class="navigation__item {% if page.url == '/about-me/'  %}active{% endif %}"
+            >About Me</a>
+
+            <a title="Contact"
+               href="{{ .Site.BaseURL }}contact"
+               class="navigation__item {% if page.url == '/contact/'  %}active{% endif %}"
+            >Contact</a>
+        </nav>
+    </div>
+</header>

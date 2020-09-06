@@ -1,0 +1,30 @@
+:root{
+    /* Configuration */
+    --interface-size: 1000px;
+    /* General */
+    /*--logo: url('/static/images/iliad.svg');*/
+    --background: #fff;
+    /* Main Color */
+    --main-color: #ffffff;
+    --main-color-dark-1: #fcfdff;
+    --main-color-dark-2: #e6e6e6;
+    --main-color-dark-3: #9b9b9b;
+
+    /* Sub Color */
+    --sub-color: #494949;
+    --sub-color-light-1: #737373;
+    --sub-color-light-2: rgba(56,56,56,.3);
+    /* Third Color */
+    --neutral-color: #007aff;
+    --neutral-color-light-1: #0090ff;
+    --neutral-color-dark-1: #0059bf;
+    /* Opacity */
+    --opacity-1: rgba(0, 0, 0, .01);
+    --opacity-2: rgba(0, 0, 0, .02);
+    --opacity-3: rgba(0, 0, 0, .04);
+    --opacity-4: rgba(0, 0, 0, .07);
+    --opacity-5: rgba(0, 0, 0, .1);
+    --opacity-6: rgba(0, 0, 0, .2);
+    --opacity-7: rgba(0, 0, 0, .3);
+    --opacity-8: rgba(0, 0, 0, .4);
+}

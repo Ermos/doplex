@@ -1,0 +1,57 @@
+.footer {
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  background-color: var(--main-color);
+}
+
+.footer:before {
+  content: "";
+  background-color: #eef0f1;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  top:-50%;
+  margin-top: 50px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(45deg);
+}
+
+.footer__back-to-top {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  background-image: url("/images/gopher-back-top.png");
+  background-size: cover;
+  width: 120px;
+  height: 60px;
+  cursor:pointer;
+  transform: translateY(20px);
+  transition: all ease-in .3s;
+}
+
+.footer__back-to-top:hover {
+  transform: translateY(0);
+}
+
+.footer__back-to-top:after {
+  text-align: center;
+  content: "Clique sur moi pour remonter !";
+  position: absolute;
+  left: -250px;
+  top: -50px;
+  width: 200px;
+  padding:20px;
+  background-color: var(--main-color);
+  color: var(--sub-color);
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #7e7e7e;
+  display:none;
+}
+
+.footer__back-to-top:hover:after {
+  display: block;
+}

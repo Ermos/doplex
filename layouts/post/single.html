@@ -1,0 +1,107 @@
+{{ partial "header.html" . }}
+<div class="app__main">
+    <main class="app__main">
+        <article class="article">
+            <section class="article__header" style="background-image: url('https://blogdummi.fr/wp-content/uploads/2019/04/christopher-gower-291246-unsplash.jpg')">
+                <div class="article__header-content interface__resize">
+                    <h1 class="article__title">{{ .Page.Title }}</h1>
+                    <p class="article__description">
+                        {{ .Page.Description }}
+                    </p>
+                </div>
+                <div class="interface__resize interface__resize--no-padding">
+                    <div class="article__header-bottom interface__resize">
+                        <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time>
+                        <p>{{ .ReadingTime }} min de lecture</p>
+                    </div>
+                </div>
+            </section>
+            <section class="interface__resize interface__resize--no-padding">
+                <div class="article__content">
+                    {{ if .Params.series }}
+                    <ul class="tag-article__list">
+                        {{ $name := .Params.series | urlize }}
+                        {{ $series := index .Site.Taxonomies.series $name }}
+                        {{ range sort $series.Pages "Params.SeriesId" "asc" }}
+                        <li>
+                            <a href="{{.Permalink}}">
+                                <span class="tag-article__part"><i>{{ .Params.SeriesId }}.</i></span>
+                                <span class="tag-article__content">{{.LinkTitle}}</span>
+                            </a>
+                        </li>
+                        {{end}}
+                    </ul>
+                    {{end}}
+
+                    {{ .Content }}
+                </div>
+            </section>
+            <section class="interface__resize">
+                <div class="article-module--split">
+                    <div class="article-module">
+                        <h3 class="article-module__title">Dans la même thématique</h3>
+                        {{ range .Params.tags }}
+                        <a href="tags/{{ . | urlize }}" class="article__tag">
+                            <button class="article__btn tag__btn">{{ . }}</button>
+                        </a>
+                        {{ end }}
+                    </div>
+                    <div class="article-module">
+                        <h3 class="article-module__title">Partager l'article</h3>
+                        <div class="article__share">
+                            <button class="article__btn share__btn">
+                                <i class="share__icon fab fa-twitter-square"></i><span>Twitter</span>
+                            </button>
+                            <button class="article__btn share__btn">
+                                <i class="share__icon fab fa-linkedin"></i><span>Linkedin</span>
+                            </button>
+                            <button class="article__btn share__btn">
+                                <i class="share__icon fab fa-facebook-square"></i><span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-module space-between">
+                    <h3 class="article-module__title">Sa pourrait également t'intéresser ...</h3>
+                    {{ if .Prev }}
+                    <a href="{{ .Prev.Permalink }}" class="article__next-article">
+                        <button class="article__btn next-article__btn">{{ .Prev.Title }}</button>
+                    </a>
+                    {{ end }}
+                    {{ if .Next }}
+                    <a href="{{ .Next.Permalink }}" class="article__next-article">
+                        <button class="article__btn next-article__btn">{{ .Next.Title }}</button>
+                    </a>
+                    {{ end }}
+                </div>
+                {{ if .Params.Comment }}
+                <h3 class="article-module__title">Partage ton avis</h3>
+                <div class="article__comment">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                        /**
+                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                        /*
+                        var disqus_config = function () {
+                        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+                        */
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://doplex.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                {{ end }}
+            </section>
+        </article>
+
+    </main>
+</div>
+{{ partial "footer.html" . }}
