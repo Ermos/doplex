@@ -18,25 +18,17 @@
             </div>
         </a>
         <nav class="header__navigation">
-            <a title="Blog"
-               href="{{ .Site.BaseURL }}"
-               class="navigation__item {% if page.url == '/blog/'  %}active{% endif %}"
-            >Blog</a>
-
-            <a title="Projects"
-               href="{{ .Site.BaseURL }}projects"
-               class="navigation__item {% if page.url == '/projects/'  %}active{% endif %}"
-            >Projects</a>
-
-            <a title="About Me"
-               href="{{ .Site.BaseURL }}about-me"
-               class="navigation__item {% if page.url == '/about-me/'  %}active{% endif %}"
-            >About Me</a>
-
-            <a title="Contact"
-               href="{{ .Site.BaseURL }}contact"
-               class="navigation__item {% if page.url == '/contact/'  %}active{% endif %}"
-            >Contact</a>
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+            {{ $active := (eq .Name $currentPage.Title) }}
+            {{ $active = or $active (and (eq .Identifier "blog") (eq $currentPage.Section "post")) }}
+            {{ $active = or $active (and (eq .Identifier "blog") (eq $currentPage.Title "")) }}
+            {{ $active = or $active (and (eq .Name "Tags") (eq $currentPage.Section "tags")) }}
+            <a title="{{ .Name }}"
+               href="{{ .URL }}"
+               class="navigation__item {{ if $active }}active{{ end }}"
+            >{{ .Name }}</a>
+            {{ end }}
         </nav>
     </div>
 </header>

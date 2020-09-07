@@ -1,9 +1,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ .Title }} &middot; {{ .Site.Author.name }}</title>
+    <title>
+        {{ if .Title }}{{ .Title }}  &middot; {{ end }}
+        Kilian Smiti
+        {{ if not .Title }}&middot; Full-Stack Developer{{ end }}
+    </title>
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
     <meta name="HandheldFriendly" content="True">
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
     <meta name="MobileOptimized" content="320">
     {{ hugo.Generator }}
     <meta name="robots" content="index,follow">

@@ -1,17 +1,40 @@
-baseurl = "/"
-title = "My blog"
+baseurl = ""
 
 [Params]
     mainSections = ["post"]
     intro = true
     headline = "My headline"
-    description = "My description"
+    description = "I'm a Full-stack Developer based in Paris, welcome to my digital world"
     github = "https://github.com/ermos"
     twitter = "https://twitter.com/doplex_"
     email = "kilian.smiti@outlook.fr"
     opengraph = true
     shareTwitter = true
     dateFormat = "Mon, Jan 2, 2006"
+
+
+[menu]
+  [[menu.main]]
+    name = "Blog"
+    identifier = "blog"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+
+  [[menu.main]]
+    name = "About me"
+    identifier = "about-me"
+    url = "/about-me/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 4
 
 [Permalinks]
     post = "/:filename/"
