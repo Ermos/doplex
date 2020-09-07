@@ -16,3 +16,6 @@ bin-release/
 
 # Hugo
 node_modules/
+
+# Editor
+.idea/
