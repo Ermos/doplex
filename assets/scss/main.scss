@@ -7,11 +7,13 @@
 @import "awesome-font";
 /*Template*/
 @import "template";
-@import "code-color";
 /*Layout*/
 @import "header";
 @import "footer";
 /*Pages*/
-@import "#article";
-@import "#blog";
-@import "#tags";
+@import "$portfolio";
+@import "$article";
+@import "$blog";
+@import "$tags";
+/*Highlight*/
+@import "code-color";

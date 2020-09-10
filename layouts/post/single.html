@@ -2,7 +2,7 @@
 <div class="app__main">
     <main class="app__main">
         <article class="article">
-            <section class="article__header" style="background-image: url('https://blogdummi.fr/wp-content/uploads/2019/04/christopher-gower-291246-unsplash.jpg')">
+            <section class="article__header" style="background-image: url('{{ .Site.BaseURL }}/{{ .Params.Image }}')">
                 <div class="article__header-content interface__resize">
                     <h1 class="article__title">{{ .Page.Title }}</h1>
                     <p class="article__description">
@@ -12,34 +12,41 @@
                 <div class="interface__resize interface__resize--no-padding">
                     <div class="article__header-bottom interface__resize">
                         <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time>
-                        <p>{{ .ReadingTime }} min de lecture</p>
+                        <p>{{ .ReadingTime }} min read</p>
                     </div>
                 </div>
             </section>
             <section class="interface__resize interface__resize--no-padding">
                 <div class="article__content">
-                    {{ if .Params.series }}
-                    <ul class="tag-article__list">
-                        {{ $name := .Params.series | urlize }}
-                        {{ $series := index .Site.Taxonomies.series $name }}
-                        {{ range sort $series.Pages "Params.SeriesId" "asc" }}
-                        <li>
-                            <a href="{{.Permalink}}">
-                                <span class="tag-article__part"><i>{{ .Params.SeriesId }}.</i></span>
-                                <span class="tag-article__content">{{.LinkTitle}}</span>
-                            </a>
-                        </li>
-                        {{end}}
-                    </ul>
-                    {{end}}
-
                     {{ .Content }}
                 </div>
             </section>
             <section class="interface__resize">
+                {{ if .Params.series }}
+                <div class="article-module space-between">
+                    <h3 class="article-module__title">Continue the series ...</h3>
+                    {{ $name := .Params.series | urlize }}
+                    {{ $currentId := .Params.SeriesId }}
+                    {{ $series := index .Site.Taxonomies.series $name }}
+                    {{ $map := sort $series.Pages "Params.SeriesId" "asc" }}
+
+                    {{ if index $map (sub $currentId 2) }}
+                    {{ $prev := index $map (sub $currentId 2) }}
+                    <a href="{{ $prev.Permalink }}" class="article__next-article">
+                        <button class="article__btn next-article__btn prev">{{ $prev.Title }}</button>
+                    </a>
+                    {{ end }}
+                    {{ if index $map $currentId }}
+                    {{ $next := index $map $currentId }}
+                    <a href="{{ $next.Permalink }}" class="article__next-article">
+                        <button class="article__btn next-article__btn next">{{ $next.Title }}</button>
+                    </a>
+                    {{ end }}
+                </div>
+                {{ end }}
                 <div class="article-module--split">
                     <div class="article-module">
-                        <h3 class="article-module__title">Dans la même thématique</h3>
+                        <h3 class="article-module__title">Same theme</h3>
                         {{ range .Params.tags }}
                         <a href="tags/{{ . | urlize }}" class="article__tag">
                             <button class="article__btn tag__btn">{{ . }}</button>
@@ -47,7 +54,7 @@
                         {{ end }}
                     </div>
                     <div class="article-module">
-                        <h3 class="article-module__title">Partager l'article</h3>
+                        <h3 class="article-module__title">Share</h3>
                         <div class="article__share">
                             <button class="article__btn share__btn">
                                 <i class="share__icon fab fa-twitter-square"></i><span>Twitter</span>
@@ -61,21 +68,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="article-module space-between">
-                    <h3 class="article-module__title">Sa pourrait également t'intéresser ...</h3>
-                    {{ if .Prev }}
-                    <a href="{{ .Prev.Permalink }}" class="article__next-article">
-                        <button class="article__btn next-article__btn">{{ .Prev.Title }}</button>
-                    </a>
-                    {{ end }}
-                    {{ if .Next }}
-                    <a href="{{ .Next.Permalink }}" class="article__next-article">
-                        <button class="article__btn next-article__btn">{{ .Next.Title }}</button>
-                    </a>
-                    {{ end }}
-                </div>
                 {{ if .Params.Comment }}
-                <h3 class="article-module__title">Partage ton avis</h3>
+                <h3 class="article-module__title">Share your opinion</h3>
                 <div class="article__comment">
                     <div id="disqus_thread"></div>
                     <script>

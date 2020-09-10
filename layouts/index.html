@@ -1,7 +1,45 @@
-{{ partial "index_top.html" . }}
-{{ $pag := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-{{ range $pag.Pages }}
-{{ partial "article-block.html" . }}
-{{ end }}
-{{ partial "pagination.html" . }}
-{{ partial "index_bottom.html" . }}
+{{ partial "header.html" . }}
+<main class="portfolio__body">
+    <section class="portfolio__content">
+        <aside class="portfolio__aside">
+            <img class="portfolio__avatar" alt="Kilian SMITI" src="{{ .Site.BaseURL }}/images/avatar.jpeg"/>
+            <h1 class="portfolio__full-name">Kilian SMITI</h1>
+            <p class="portfolio__job">Full-Stack Developer</p>
+        </aside>
+        <article class="portfolio__article">
+            <h2 class="biography__title">Hey ! 👋</h2>
+            <p class="biography__p">
+                I'm <b>Kilian SMITI</b>, a french developer passionate about web technologies since his childhood.
+                I started building websites when I was ten year old and I decided to make it my job.
+            </p>
+            <p class="biography__p">
+                Currently, I'm <b>Full-Stack Developer</b> for <b>Free (Iliad)</b> 🚀, one of the main French telecommunications operators.
+                I work on many internal applications, whether it is on invoicing tools, or civil engineering management tools,
+                I have no trouble getting to grips with a subject.
+            </p>
+            <p class="biography__p">
+                I master many langage and framework, for the front-end, I master <b>HTML</b>, <b>CSS</b> (with pre-processor like <b>Sass</b>),
+                <b>Javascript</b> and some framework like <b>Vue.js</b>, <b>React</b> and <b>Electron</b>.
+                For back-end langages, I master <b>Golang</b>, <b>PHP</b>, <b>Node.js</b> and
+                some framework specialy in PHP like <b>Symfony</b> and <b>Laravel</b>.
+            </p>
+            <p class="biography__p">
+                I'm also working with several tool like <b>Docker</b>, <b>Webpack</b>, <b>Typescript</b>, <b>ESLint</b> and <b>Git</b>.
+            </p>
+        </article>
+    </section>
+</main>
+<section class="portfolio__content">
+    <aside class="portfolio__aside">
+        <h2 class="last_posts">Last Posts</h2>
+    </aside>
+    <article class="portfolio__article">
+        {{ range first 2 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+        <a class="last-posts__title" href="{{ .Permalink }}">{{ .Title }}</a>
+        <p class="biography__p">
+            {{ .Description }}
+        </p>
+        {{ end }}
+    </article>
+</section>
+{{ partial "footer.html" . }}

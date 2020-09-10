@@ -126,3 +126,9 @@
 .navigation__item:nth-child(even):hover, .navigation__item:nth-child(even).active {
   transform: rotate(-5deg);
 }
+
+@media screen and (max-width: 700px) {
+  .header__chevron, .header__logo {
+    display: none;
+  }
+}

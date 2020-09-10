@@ -22,7 +22,7 @@
             {{ range .Site.Menus.main }}
             {{ $active := (eq .Name $currentPage.Title) }}
             {{ $active = or $active (and (eq .Identifier "blog") (eq $currentPage.Section "post")) }}
-            {{ $active = or $active (and (eq .Identifier "blog") (eq $currentPage.Title "")) }}
+            {{ $active = or $active (and (eq .Identifier "home") (eq $currentPage.Title "")) }}
             {{ $active = or $active (and (eq .Name "Tags") (eq $currentPage.Section "tags")) }}
             <a title="{{ .Name }}"
                href="{{ .URL }}"

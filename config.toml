@@ -12,23 +12,39 @@ baseurl = ""
     shareTwitter = true
     dateFormat = "Mon, Jan 2, 2006"
 
+[params.Codepen]
+  user = "kevingimbel"
+  editable = true
+  preview = true
+  script_src = "/codepen.js"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
 
 [menu]
   [[menu.main]]
-    name = "Blog"
-    identifier = "blog"
+    name = "Home"
+    identifier = "home"
     url = "/"
     weight = 1
 
   [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
+    name = "Blog"
+    identifier = "blog"
+    url = "/post/"
     weight = 2
 
   [[menu.main]]
-    name = "About me"
-    identifier = "about-me"
-    url = "/about-me/"
+    name = "Projects"
+    url = "/projects/"
     weight = 3
 
   [[menu.main]]
@@ -37,7 +53,7 @@ baseurl = ""
     weight = 4
 
 [Permalinks]
-    post = "/:filename/"
+    post = "/post/:filename/"
 
 [taxonomies]
   category = "category"

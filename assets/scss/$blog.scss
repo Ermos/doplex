@@ -185,3 +185,15 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+
+
+@media screen and (max-width: 850px) {
+  .blog {
+    flex-direction: column;
+  }
+
+  .blog__articles, .blog__finder {
+    width: 100%;
+  }
+}

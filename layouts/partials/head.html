@@ -14,7 +14,7 @@
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ $styles := resources.Get "scss/main.scss" | toCSS | minify }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
     {{ if .OutputFormats.Get "RSS" }}
    <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml">
     {{ end }}

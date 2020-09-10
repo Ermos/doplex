@@ -1,0 +1,89 @@
+.portfolio__body {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.portfolio__content {
+  width: 100%;
+  max-width: var(--interface-size);
+  box-sizing: border-box;
+  padding: 50px 20px 20px;
+  margin:auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio__aside {
+  width: calc(30% - 30px);
+  text-align: center;
+}
+
+.portfolio__article {
+  width: calc(70% - 30px);
+}
+
+.portfolio__avatar {
+  width: 20rem;
+  border-radius: 50%;
+}
+
+.portfolio__full-name {
+  margin-top: 20px;
+  font-size: 3.5rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.portfolio__job {
+  margin-top: 10px;
+  font-size: 2.3rem;
+  color: var(--sub-color-light-1);
+}
+
+.biography__title {
+  font-size: 5rem;
+}
+
+.biography__p {
+  font-size: 2rem;
+  margin-top: 20px;
+  line-height: 2;
+}
+
+.biography__p b {
+  background-color: rgba(0, 122, 255, 0.2);
+  box-sizing: border-box;
+  padding: 0 5px;
+  color: #007aff;
+}
+
+.last_posts {
+  font-size: 5rem;
+  color: var(--sub-color-light-1);
+}
+
+.last-posts__title {
+  display: inline-block;
+  font-size: 5rem;
+  margin-top: 50px;
+}
+
+.last-posts__title:first-child {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .portfolio__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio__article {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .portfolio__aside {
+    width: 100%;
+  }
+}
